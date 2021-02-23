@@ -1,0 +1,27 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'DotGothic16', sans-serif;
+}
+
+body {
+  background-color: #f9f9f9;
+}
+
+.App {
+  width: 20vw;
+  margin: auto;
+}
+
+.underline {
+  border-bottom: 1px #999 solid;
+}
+
+.income {
+  color: green;
+}
+
+.expense {
+  color: red;
+}

@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import React, {useState} from 'react';
+
+import BalanceContainer from './components/balance/BalanceContainer';
+import Header from './components/layout/Header';
+import HistoryContainer from './components/history/HistoryContainer';
+import Input from './components/input/Input';
 
 function App() {
+  const [list, setList] = useState([])
+
+  const addNewTransaction = (transaction) => {
+    setList(prevList => [...prevList, transaction]);
+  }
+
+  const delTransaction = (e) => {
+    setList(list.filter(item => item.id !== e.target.value))
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <BalanceContainer list={list} />
+      <HistoryContainer list={list} delTransaction={delTransaction}/>
+      <Input addNewTransaction={addNewTransaction}/>
     </div>
   );
 }
